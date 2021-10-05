@@ -17,7 +17,7 @@ const gameSchema = mongoose.Schema({
         max:12,
         default:2
     },
-    publisher:[{
+    publisher:{
         name: {
             type:String,
             minlength:3,
@@ -25,10 +25,10 @@ const gameSchema = mongoose.Schema({
         },
         country: {
             type: String,
-            enum: ['USA','France','Germany','Afghanistan','Japan'],
-            default: 'Afghanistan'
+           // enum: ['USA','France','Germany','Afghanistan','Japan'],
+           // default: 'Afghanistan'
         }
-    }],
+    },
     reviews: [{
         name: {
             type:String,

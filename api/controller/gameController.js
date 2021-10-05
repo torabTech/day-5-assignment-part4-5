@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Game = mongoose.model("Game");
 
-getAll = function (req, res) {
+const getAll = function (req, res) {
     
   let offset = 0;
   let count = 5;
@@ -24,7 +24,7 @@ getAll = function (req, res) {
     });
 };
 
-getOne = function (req, res) {
+const getOne = function (req, res) {
   const checkID = mongoose.Types.ObjectId.isValid(req.params.id);
   if (!checkID) {
     res.status(400).json({ message: "invalid ID has been provided" });
@@ -45,28 +45,28 @@ getOne = function (req, res) {
   });
 };
 
-addOne = function (req, res) {
+const addOne = function (req, res) {
   //check body
-
   if (Object.keys(req.body).length == 0) {
     res.status(400).json({ message: "body not provided" });
     return;
   }
 
-  console.log(req.body);
+  //console.log(req.body);
 
   const data = {
       title : req.body.title,
       year : req.body.year,
       players : req.body.players,
-      publisher : [{
+
+     /*  publisher : [{
           name : req.body.publisher[0].name,
           country : req.body.publisher[0].country
       }],
       reviews : [{
           name : req.body.reviews[0].name,
           date : req.body.reviews[0].date
-      }]
+      }] */
   }
 
   Game.create(data, function (err, result) {
@@ -75,11 +75,11 @@ addOne = function (req, res) {
       return;
     }
 
-    res.status(200).json(result);
+    res.status(201).json(result);
   });
 };
 
-deleteOne = function (req, res) {
+const deleteOne = function (req, res) {
   const checkID = mongoose.Types.ObjectId.isValid(req.params.id);
 
   if (!checkID) {
@@ -101,7 +101,7 @@ deleteOne = function (req, res) {
   });
 };
 
-updateOne = function (req, res) {
+const updateOne = function (req, res) {
   const checkID = mongoose.Types.ObjectId.isValid(req.params.id);
 
   if (!checkID) {

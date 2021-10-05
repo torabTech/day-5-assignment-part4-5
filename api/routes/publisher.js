@@ -8,8 +8,7 @@ router.route('/')
     .post(controller.addOne);
 
 
-router.route('/:pid')
-    .get(controller.getOne)
+router.route('/')
     .put(controller.updateOne)
     .delete(controller.deleteOne);
 
