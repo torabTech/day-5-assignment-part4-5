@@ -1,1 +1,4 @@
 node_modules/
+_macosx
+.ds_store
+.env
